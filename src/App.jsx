@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import EmergencyButton from './components/EmergencyButton'
 import Toast from './components/Toast'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import LostAndFound from './pages/LostAndFound'
 import Instructions from './pages/Instructions'
@@ -15,6 +16,7 @@ import LiveUpdates from './pages/LiveUpdates'
 import ResearchCenter from './pages/ResearchCenter'
 import Login from './pages/Login'
 import ReportIncident from './pages/ReportIncident'
+import Dashboard from './pages/Dashboard'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { AuthProvider } from './contexts/AuthContext'
 import { DatabaseProvider } from './contexts/DatabaseContext'
@@ -55,6 +57,7 @@ function App() {
                     <Route path="/donations" element={<div className="max-w-5xl mx-auto"><Donations /></div>} />
                     <Route path="/ai-assistant" element={<div className="max-w-5xl mx-auto"><AIAssistant /></div>} />
                     <Route path="/report-incident" element={<div className="max-w-5xl mx-auto"><ReportIncident /></div>} />
+                    <Route path="/dashboard" element={<div className="max-w-7xl mx-auto"><Dashboard /></div>} />
                     <Route path="/feedback" element={<div className="max-w-5xl mx-auto"><Feedback /></div>} />
                     <Route path="/about" element={<div className="max-w-5xl mx-auto"><About /></div>} />
                     <Route path="/login" element={<div className="max-w-5xl mx-auto"><Login /></div>} />
@@ -67,6 +70,7 @@ function App() {
             
             <EmergencyButton />
             <LocationGate />
+            <Footer />
           </div>
         </Router>
         </LanguageProvider>

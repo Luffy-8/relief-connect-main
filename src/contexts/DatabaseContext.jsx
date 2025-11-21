@@ -8,52 +8,68 @@ export const useDatabase = () => useContext(DatabaseContext);
 const initialSampleAlerts = [
   {
     id: 1,
-    title: 'Severe Cyclonic Storm Warning',
-    description: 'A severe cyclonic storm is expected to make landfall. Strong winds and heavy rain likely; secure loose objects and follow evacuation orders.',
+    title: 'Cyclone Michaung - Hyderabad Alert',
+    description: 'Severe cyclone approaching Hyderabad. Heavy rainfall and strong winds expected. Immediate evacuation required for low-lying areas.',
     severity: 'critical',
-    location: 'Odisha Coast',
+    location: 'Hyderabad, Telangana',
     alert_type: 'weather',
-    source: 'India Meteorological Department (IMD)',
-    lat: 19.820664,
-    lng: 85.906167,
-    created_at: new Date(Date.now() - 1000 * 60 * 5).toISOString(), // 5 mins ago
+    source: 'Telangana State Emergency Management',
+    lat: 17.3850,
+    lng: 78.4867,
+    created_at: new Date(Date.now() - 1000 * 60 * 15).toISOString(), // 15 mins ago
     active: true,
+    status: 'In-Progress',
+    volunteers_needed: 25,
+    volunteers_assigned: 18
   },
   {
     id: 2,
-    title: 'Flash Flood Alert',
-    description: 'Intense rainfall has caused water levels to rise rapidly in low-lying areas. Avoid flooded roads and move to higher ground if necessary.',
-    severity: 'high',
-    location: 'Assam (Brahmaputra basin)',
+    title: 'Flash Flood - Kukatpally Housing Board',
+    description: 'Urgent help needed for 50 families trapped in flooded apartments. Rescue boats and medical aid required immediately.',
+    severity: 'critical',
+    location: 'Kukatpally, Hyderabad',
     alert_type: 'flood',
-    source: 'State Disaster Management Authority',
-    lat: 26.200557,
-    lng: 92.937576,
-    created_at: new Date(Date.now() - 1000 * 60 * 30).toISOString(), // 30 mins ago
+    source: 'GHMC Emergency Response',
+    lat: 17.4851,
+    lng: 78.4110,
+    created_at: new Date(Date.now() - 1000 * 60 * 45).toISOString(), // 45 mins ago
     active: true,
+    status: 'Pending',
+    volunteers_needed: 15,
+    volunteers_assigned: 8
   },
   {
     id: 3,
-    title: 'Forest Fire Evacuation Notice',
-    description: 'Rapid spread of wildfires in hill slopes. Immediate evacuation advised for nearby settlements.',
+    title: 'Emergency Shelter - Gachibowli',
+    description: 'Temporary shelter established for displaced families. Need volunteers for food distribution and medical assistance.',
     severity: 'high',
-    location: 'Uttarakhand - Chamoli District',
-    alert_type: 'wildfire',
-    source: 'Forest Department',
-    lat: 30.7183,
-    lng: 79.5157,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), // 2 hours ago
+    location: 'Gachibowli, Hyderabad',
+    alert_type: 'relief',
+    source: 'Red Cross Hyderabad',
+    lat: 17.4400,
+    lng: 78.3489,
+    created_at: new Date(Date.now() - 1000 * 60 * 90).toISOString(), // 1.5 hours ago
     active: true,
+    status: 'In-Progress',
+    volunteers_needed: 20,
+    volunteers_assigned: 20
   },
   {
     id: 4,
-    title: 'Widespread Power Outage',
-    description: 'Power supply disrupted across multiple wards due to grid damage. Crews are working on restoration; expect intermittent outages.',
-    severity: 'medium',
-    location: 'Mumbai Suburban',
-    alert_type: 'infrastructure',
-    source: 'Local Electricity Distribution Company',
-    lat: 19.075984,
+    title: 'Medical Emergency - HITEC City',
+    description: 'Power outage at local hospital. Backup generators needed urgently. Patients need immediate evacuation assistance.',
+    severity: 'critical',
+    location: 'HITEC City, Hyderabad',
+    alert_type: 'medical',
+    source: 'Apollo Hospital Emergency',
+    lat: 17.4435,
+    lng: 78.3772,
+    created_at: new Date(Date.now() - 1000 * 60 * 120).toISOString(), // 2 hours ago
+    active: true,
+    status: 'Completed',
+    volunteers_needed: 10,
+    volunteers_assigned: 12
+  },
     lng: 72.877656,
     created_at: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(), // 5 hours ago
     active: true,
@@ -86,10 +102,153 @@ const initialSampleAlerts = [
   }
 ];
 
+// Sample volunteers data
+const initialVolunteers = [
+  {
+    id: 1,
+    name: 'Dr. Priya Sharma',
+    email: 'priya.sharma@gmail.com',
+    phone: '+91 9876543210',
+    skills: ['Medical Care', 'Emergency Response'],
+    experience: '5+ years emergency medicine',
+    location: 'Banjara Hills, Hyderabad',
+    availability: 'Available Now',
+    rating: 4.9,
+    completed_missions: 23,
+    badge: 'Gold Volunteer',
+    joined: '2023-01-15',
+    lat: 17.4126,
+    lng: 78.4482
+  },
+  {
+    id: 2,
+    name: 'Rajesh Kumar',
+    email: 'rajesh.k.volunteer@gmail.com',
+    phone: '+91 8765432109',
+    skills: ['Search & Rescue', 'Logistics'],
+    experience: '3 years disaster relief',
+    location: 'Jubilee Hills, Hyderabad',
+    availability: 'Available Now',
+    rating: 4.7,
+    completed_missions: 15,
+    badge: 'Silver Volunteer',
+    joined: '2023-06-10',
+    lat: 17.4239,
+    lng: 78.4084
+  },
+  {
+    id: 3,
+    name: 'Anita Reddy',
+    email: 'anita.reddy.help@gmail.com',
+    phone: '+91 7654321098',
+    skills: ['Food Distribution', 'Child Care'],
+    experience: '2 years community service',
+    location: 'Gachibowli, Hyderabad',
+    availability: 'Off Duty',
+    rating: 4.8,
+    completed_missions: 12,
+    badge: 'Bronze Volunteer',
+    joined: '2024-02-20',
+    lat: 17.4400,
+    lng: 78.3489
+  },
+  {
+    id: 4,
+    name: 'Mohammed Ali',
+    email: 'mohammed.ali.rescue@gmail.com',
+    phone: '+91 6543210987',
+    skills: ['Transportation', 'Emergency Response'],
+    experience: '4 years rescue operations',
+    location: 'Kukatpally, Hyderabad',
+    availability: 'Available Now',
+    rating: 4.6,
+    completed_missions: 18,
+    badge: 'Silver Volunteer',
+    joined: '2023-09-05',
+    lat: 17.4851,
+    lng: 78.4110
+  }
+];
+
+// Sample help requests data
+const initialHelpRequests = [
+  {
+    id: 1,
+    title: 'Family Trapped in Flooded Building',
+    description: 'Family of 5 including elderly and children trapped on 2nd floor. Water level rising rapidly.',
+    category: 'Emergency Rescue',
+    priority: 'Critical',
+    status: 'Pending',
+    requester_name: 'Suresh Babu',
+    requester_phone: '+91 9988776655',
+    location: 'Nizampet, Hyderabad',
+    lat: 17.5123,
+    lng: 78.3911,
+    created_at: new Date(Date.now() - 1000 * 60 * 20).toISOString(), // 20 mins ago
+    volunteers_needed: 3,
+    volunteers_assigned: 1,
+    estimated_time: '1-2 hours'
+  },
+  {
+    id: 2,
+    title: 'Medical Emergency - Diabetic Patient',
+    description: 'Diabetic patient needs insulin urgently. Local pharmacy flooded. Need medical volunteer with supplies.',
+    category: 'Medical Assistance',
+    priority: 'High',
+    status: 'In Progress',
+    requester_name: 'Lakshmi Devi',
+    requester_phone: '+91 8877665544',
+    location: 'Madhapur, Hyderabad',
+    lat: 17.4485,
+    lng: 78.3908,
+    created_at: new Date(Date.now() - 1000 * 60 * 35).toISOString(), // 35 mins ago
+    volunteers_needed: 2,
+    volunteers_assigned: 2,
+    estimated_time: '30-45 minutes'
+  },
+  {
+    id: 3,
+    title: 'Food & Water for Stranded Families',
+    description: '15 families in apartment complex without food/water for 8+ hours. Road access blocked by fallen trees.',
+    category: 'Relief Distribution',
+    priority: 'High',
+    status: 'Completed',
+    requester_name: 'Apartment Residents Association',
+    requester_phone: '+91 7766554433',
+    location: 'Kondapur, Hyderabad',
+    lat: 17.4616,
+    lng: 78.3659,
+    created_at: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), // 2 hours ago
+    volunteers_needed: 5,
+    volunteers_assigned: 6,
+    estimated_time: 'Completed',
+    completion_note: 'Food packets distributed successfully. Road cleared.'
+  },
+  {
+    id: 4,
+    title: 'Elderly Care - Power Outage',
+    description: 'Senior citizen with oxygen machine. Power out for 3+ hours. Need generator or evacuation assistance.',
+    category: 'Medical Assistance',
+    priority: 'Critical',
+    status: 'Pending',
+    requester_name: 'Dr. Venkat',
+    requester_phone: '+91 6655443322',
+    location: 'Ameerpet, Hyderabad',
+    lat: 17.4376,
+    lng: 78.4482,
+    created_at: new Date(Date.now() - 1000 * 60 * 10).toISOString(), // 10 mins ago
+    volunteers_needed: 2,
+    volunteers_assigned: 0,
+    estimated_time: 'ASAP'
+  }
+];
+
 // This component will provide the database functions to the rest of the app.
 export const DatabaseProvider = ({ children }) => {
   // Use state to make our mock database mutable (for INSERTs)
   const [alerts, setAlerts] = useState(initialSampleAlerts);
+  const [volunteers, setVolunteers] = useState(initialVolunteers);
+  const [helpRequests, setHelpRequests] = useState(initialHelpRequests);
   const bcRef = useRef(null);
 
   useEffect(() => {
@@ -253,7 +412,7 @@ export const DatabaseProvider = ({ children }) => {
   };
 
   return (
-    <DatabaseContext.Provider value={{ executeQuery, alerts }}>
+    <DatabaseContext.Provider value={{ executeQuery, alerts, volunteers, helpRequests }}>
       {children}
     </DatabaseContext.Provider>
   );

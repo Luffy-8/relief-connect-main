@@ -10,7 +10,8 @@ import {
   Info, 
   Radio,
   BookOpen,
-  X
+  X,
+  BarChart3
 } from 'lucide-react'
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -18,6 +19,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   const navigation = [
     { name: 'Home', href: '/', icon: Home },
+    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
     { name: 'Lost & Found', href: '/lost-found', icon: Search },
     { name: 'Instructions & Safety', href: '/instructions', icon: Shield },
     { name: 'Donation & Volunteers', href: '/donations', icon: Heart },

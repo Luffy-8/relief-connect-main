@@ -397,26 +397,29 @@ const Home = () => {
       )}
 
       {/* Hero Section */}
-      <div className="text-center py-12 px-4 reveal reveal-delay-1">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-          {t.home.heroTitle}
+      <div className="text-center section-padding reveal reveal-delay-1">
+        <h1 className="text-hero text-gray-900 dark:text-white mb-6">
+          Connecting Disaster Survivors & Volunteers in Real Time
         </h1>
-        <p className="text-lg md:text-xl font-semibold text-primary-600 dark:text-primary-400 mb-6">
-          {t.home.heroSubtitle}
+        <p className="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-6">
+          A smart coordination platform for relief distribution
         </p>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+        <p className="text-lead max-w-4xl mx-auto mb-10">
           Connect with emergency resources, report incidents, find missing persons, 
           and get AI-powered assistance during disasters and emergencies.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/ai-assistant" className="btn-primary text-lg px-8 py-3">
-            {t.home.getHelp}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <Link to="/donations?tab=volunteer" className="btn-primary text-lg px-8 py-3">
+            Register as Volunteer
           </Link>
-          <button onClick={() => navigate('/report-incident')} className="bg-red-600 hover:bg-red-700 text-white font-medium text-lg px-8 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center">
+          <button onClick={() => navigate('/report-incident')} className="btn-emergency text-lg px-8 py-3 flex items-center justify-center">
             <AlertTriangle className="mr-2 h-5 w-5" />
-            {t.home.reportIncident}
+            Request Help
           </button>
+          <Link to="/dashboard" className="bg-humanitarian-600 hover:bg-humanitarian-700 text-white font-semibold text-lg px-8 py-3 rounded-lg transition-all duration-200 focus-ring shadow-elevated hover:shadow-floating transform hover:scale-105 flex items-center justify-center">
+            Open Dashboard
+          </Link>
         </div>
       </div>
 
@@ -436,11 +439,11 @@ const Home = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 content-spacing">
         {quickActions.map((action, index) => (
-          <Link key={index} to={action.href} className="card hover:shadow-lg transition-shadow duration-200 group reveal reveal-delay-2">
-            <div className={`${action.color} w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200`}>
-              <action.icon className="h-6 w-6 text-white" />
+          <Link key={index} to={action.href} className="card interactive-card shadow-card hover:shadow-floating group reveal reveal-delay-2 focus-ring">
+            <div className={`${action.color} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200 shadow-md`}>
+              <action.icon className="h-7 w-7 text-white" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
               {action.title}
@@ -453,14 +456,14 @@ const Home = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
         {stats.map((stat, index) => (
-          <div key={index} className="card text-center">
-            <stat.icon className="h-8 w-8 text-primary-600 dark:text-primary-400 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+          <div key={index} className="card text-center shadow-card hover:shadow-elevated transition-shadow duration-200">
+            <stat.icon className="h-10 w-10 text-primary-600 dark:text-primary-400 mx-auto mb-4" />
+            <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               {stat.value}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-300">
+            <div className="text-sm font-medium text-gray-600 dark:text-gray-300">
               {stat.label}
             </div>
           </div>
